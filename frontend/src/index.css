@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { font-family: 'DM Sans', sans-serif; }
+
+body {
+  background: #0f0f0f;
+  color: #f0ede6;
+  min-height: 100vh;
+}
+
+.serif { font-family: 'DM Serif Display', serif; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+/* Editable cell */
+.editable {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 2px 6px;
+  transition: background 0.15s;
+}
+.editable:hover { background: rgba(201,168,76,0.12); }
+
+.editing-input {
+  background: #1a1200;
+  border: 1px solid #C9A84C;
+  border-radius: 4px;
+  color: #f0ede6;
+  padding: 2px 6px;
+  outline: none;
+  width: 100%;
+}
+
+/* Table rows */
+.inv-row:hover td { background: #1e1e1e; }
+
+/* Sidebar active */
+.nav-active {
+  color: #e8c97a !important;
+  background: #1e1e1e;
+  border-left: 2px solid #C9A84C;
+}
