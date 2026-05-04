@@ -29,12 +29,6 @@ docker compose down
 ```
 Your data is safe — it lives in the `pgdata` Docker volume.
 
-### Wipe and reset data
-```bash
-docker compose down -v   # -v removes the volume (deletes all data)
-docker compose up --build
-```
-
 ### Daily Use
 ```bash
 # Start
@@ -42,6 +36,12 @@ docker compose up -d
 
 # Stop
 docker compose down
+```
+
+### Wipe and reset data
+```bash
+docker compose down -v   # -v removes the volume (deletes all data)
+docker compose up --build
 ```
 
 ---
@@ -62,46 +62,6 @@ Then open `http://192.168.x.x:3000` on your phone browser.
 2. Sign in with Google on both devices
 3. Your PC gets a stable IP like `100.x.x.x`
 4. Open `http://100.x.x.x:3000` from anywhere
-
----
-
-## Deploy to Railway (One Click)
-
-### Step 1 — Push to GitHub
-```bash
-git init
-git add .
-git commit -m "initial"
-git remote add origin https://github.com/YOUR_USERNAME/wealthos.git
-git push -u origin main
-```
-
-### Step 2 — Create Railway project
-1. Go to [railway.app](https://railway.app) → New Project
-2. Choose "Deploy from GitHub repo" → select your repo
-3. Railway auto-detects the Dockerfile
-
-### Step 3 — Add PostgreSQL
-1. In your Railway project → + New → Database → PostgreSQL
-2. Railway auto-sets `DATABASE_URL` as an env variable
-
-### Step 4 — Set environment variable
-In your Railway service settings → Variables:
-```
-DATABASE_URL = (auto-set by Railway when you add Postgres)
-```
-
-### Step 5 — Deploy frontend
-Create a second Railway service from the same repo:
-- Root directory: `/frontend`
-- It will use the frontend Dockerfile
-
-Set env var:
-```
-VITE_API_URL = https://your-backend.railway.app
-```
-
-Your app is live at the Railway-provided URL.
 
 ---
 
