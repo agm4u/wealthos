@@ -12,7 +12,7 @@ Dark, beautiful personal finance tracker. Run locally with Docker Desktop, deplo
 ### Start the app
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/agm4u/wealthos.git
 cd wealthos
 docker compose up --build
 ```
@@ -21,7 +21,7 @@ That's it. Open http://localhost:3000
 
 - Frontend: http://localhost:3000
 - API docs: http://localhost:8000/docs
-- Database auto-seeds with your investment data on first run
+- Default Password: wealthos2026
 
 ### Stop the app
 ```bash
@@ -33,6 +33,15 @@ Your data is safe — it lives in the `pgdata` Docker volume.
 ```bash
 docker compose down -v   # -v removes the volume (deletes all data)
 docker compose up --build
+```
+
+### Daily Use
+```bash
+# Start
+docker compose up -d
+
+# Stop
+docker compose down
 ```
 
 ---
