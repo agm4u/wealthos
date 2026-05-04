@@ -15,6 +15,7 @@ export const CAT_COLORS = {
   NPS: '#534AB7', PPF: '#1D9E75', EPF: '#3B6D11',
   Gold: '#EF9F27', Shares: '#D4537E', ETF: '#E24B4A',
   US: '#7F77DD', Crypto: '#888780',
+  'Bank Accounts': '#2D9CDB',
 }
 
 export const CAT_BG = {
@@ -29,6 +30,7 @@ export const CAT_BG = {
   ETF: 'bg-red-900/30 text-red-300',
   US: 'bg-indigo-900/30 text-indigo-300',
   Crypto: 'bg-gray-700/50 text-gray-300',
+  'Bank Accounts': 'bg-sky-900/30 text-sky-300',
 }
 
 export function EditableCell({ value, onSave, type = 'text', className = '' }) {
@@ -139,4 +141,4 @@ export function Spinner() {
   )
 }
 
-export const CATEGORIES = ['MF', 'FD', 'Bond', 'NPS', 'PPF', 'EPF', 'Gold', 'Shares', 'ETF', 'US', 'Crypto']
+export const CATEGORIES = ['MF', 'FD', 'Bond', 'NPS', 'PPF', 'EPF', 'Gold', 'Shares', 'ETF', 'US', 'Crypto', 'Bank Accounts']

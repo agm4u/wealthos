@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const PASSWORD = 'wealthos2024'   // ← change this to whatever you want
+const PASSWORD = 'wealthos2026'   // ← change this to whatever you want
 
 export default function Login({ onLogin }) {
   const [pw, setPw] = useState('')
@@ -24,18 +24,18 @@ export default function Login({ onLogin }) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <div className={`w-full max-w-sm ${shake ? 'animate-shake' : ''}`}>
 
         {/* Logo */}
         <div className="text-center mb-10">
-          <h1 className="serif text-gold text-4xl mb-2">WealthOS</h1>
-          <p className="text-gray-600 text-sm tracking-widest uppercase">Personal Finance</p>
+          <h1 className="serif text-4xl mb-2" style={{ color: 'var(--gold)' }}>WealthOS</h1>
+          <p className="text-sm tracking-widest uppercase" style={{ color: 'var(--text-muted)' }}>Personal Finance</p>
         </div>
 
         {/* Card */}
-        <div className="bg-[#161616] border border-[#2a2a2a] rounded-2xl p-8">
-          <p className="text-gray-400 text-sm mb-6 text-center">Enter your password to continue</p>
+        <div className="rounded-2xl p-8" style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border)' }}>
+          <p className="text-sm mb-6 text-center" style={{ color: 'var(--text-secondary)' }}>Enter your password to continue</p>
 
           <input
             type="password"
@@ -44,22 +44,26 @@ export default function Login({ onLogin }) {
             value={pw}
             onChange={e => { setPw(e.target.value); setError(false) }}
             onKeyDown={keyDown}
-            className={`w-full bg-[#1e1e1e] border rounded-xl px-4 py-3 text-gray-100 text-sm outline-none transition-colors placeholder-gray-700
-              ${error ? 'border-red-500/60 text-red-400' : 'border-[#333] focus:border-gold'}`}
+            className={`w-full rounded-xl px-4 py-3 text-sm outline-none transition-colors`}
+            style={{
+              backgroundColor: 'var(--bg-accent)',
+              border: `1px solid ${error ? 'rgba(239,68,68,0.6)' : 'var(--border)'}`,
+              color: error ? 'var(--text-secondary)' : 'var(--text-primary)',
+            }}
           />
 
           {error && (
-            <p className="text-red-400 text-xs mt-2 text-center">Incorrect password</p>
+            <p className="text-xs mt-2 text-center" style={{ color: 'var(--text-secondary)' }}>Incorrect password</p>
           )}
 
           <button
             onClick={attempt}
-            className="w-full mt-4 bg-gold hover:bg-gold/90 text-black font-medium py-3 rounded-xl text-sm transition-colors">
+            className="w-full mt-4 py-3 rounded-xl text-sm font-medium transition-colors hover:bg-gold/90" style={{ backgroundColor: 'var(--gold)', color: 'black' }}>
             Unlock
           </button>
         </div>
 
-        <p className="text-center text-gray-800 text-xs mt-6">Running locally · Your data stays on your machine</p>
+        <p className="text-center text-xs mt-6" style={{ color: 'var(--text-muted)' }}>Running locally · Your data stays on your machine</p>
       </div>
 
       <style>{`

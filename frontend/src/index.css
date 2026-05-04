@@ -5,17 +5,44 @@
 * { font-family: 'DM Sans', sans-serif; }
 
 body {
-  background: #0f0f0f;
-  color: #f0ede6;
-  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .serif { font-family: 'DM Serif Display', serif; }
 
+/* CSS Variables for themes */
+:root {
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #141414;
+  --bg-tertiary: #161616;
+  --bg-accent: #1a1a1a;
+  --bg-hover: #1e1e1e;
+  --border: #1e1e1e;
+  --text-primary: #f0ede6;
+  --text-secondary: #e8c97a;
+  --text-muted: #6b7280;
+  --gold: #C9A84C;
+}
+
+.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --bg-accent: #dee2e6;
+  --bg-hover: #f1f3f4;
+  --border: #dee2e6;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --text-muted: #6c757d;
+  --gold: #856404;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
-::-webkit-scrollbar-track { background: #1a1a1a; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
 /* Editable cell */
 .editable {
@@ -27,21 +54,22 @@ body {
 .editable:hover { background: rgba(201,168,76,0.12); }
 
 .editing-input {
-  background: #1a1200;
-  border: 1px solid #C9A84C;
+  background: var(--bg-accent);
+  border: 1px solid var(--gold);
   border-radius: 4px;
-  color: #f0ede6;
+  color: var(--text-primary);
   padding: 2px 6px;
   outline: none;
   width: 100%;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Table rows */
-.inv-row:hover td { background: #1e1e1e; }
+.inv-row:hover td { background: var(--bg-hover); }
 
 /* Sidebar active */
 .nav-active {
-  color: #e8c97a !important;
-  background: #1e1e1e;
-  border-left: 2px solid #C9A84C;
+  color: var(--text-secondary) !important;
+  background: var(--bg-hover);
+  border-left: 2px solid var(--gold);
 }

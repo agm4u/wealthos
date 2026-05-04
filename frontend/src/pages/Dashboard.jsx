@@ -52,13 +52,13 @@ export default function Dashboard({ onNavigate }) {
       {/* Header */}
       <div className="flex justify-between items-end mb-6 flex-wrap gap-3">
         <div>
-          <h1 className="serif text-2xl text-gold">Investment Dashboard</h1>
-          <p className="text-gray-500 text-sm mt-1 flex items-center gap-2">
+          <h1 className="serif text-2xl" style={{ color: 'var(--gold)' }}>Investment Dashboard</h1>
+          <p className="text-sm mt-1 flex items-center gap-2" style={{ color: 'var(--text-muted)' }}>
             Valuation as of{' '}
             <EditableCell value={data.valuation_date} onSave={saveDate} className="text-gray-400" />
           </p>
         </div>
-        <span className="text-xs px-3 py-1 bg-green-900/30 text-green-400 rounded-full border border-green-800/40">Live</span>
+        <span className="text-xs px-3 py-1 rounded-full border" style={{ backgroundColor: 'rgba(34,197,94,0.3)', color: '#4ade80', borderColor: 'rgba(34,197,94,0.4)' }}>Live</span>
       </div>
 
       {/* Metric cards */}
@@ -69,18 +69,18 @@ export default function Dashboard({ onNavigate }) {
           { label: 'Monthly Transfer In', value: fmt(data.monthly_transfer_in), sub: 'Across all banks' },
           { label: 'No. of Assets', value: Object.values(data.by_category).reduce((s, v) => s + v.count, 0), sub: 'Individual entries' },
         ].map(c => (
-          <div key={c.label} className="bg-[#161616] border border-[#2a2a2a] rounded-xl p-4">
-            <p className="text-xs text-gray-500 uppercase tracking-wide mb-2">{c.label}</p>
-            <p className={`text-2xl font-light ${c.gold ? 'text-gold' : 'text-gray-100'}`}>{c.value}</p>
-            <p className="text-xs text-gray-600 mt-1">{c.sub}</p>
+          <div key={c.label} className="rounded-xl p-4" style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border)' }}>
+            <p className="text-xs uppercase tracking-wide mb-2" style={{ color: 'var(--text-muted)' }}>{c.label}</p>
+            <p className="text-2xl font-light" style={{ color: c.gold ? 'var(--gold)' : 'var(--text-primary)' }}>{c.value}</p>
+            <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{c.sub}</p>
           </div>
         ))}
       </div>
 
       {/* Charts row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div className="bg-[#161616] border border-[#2a2a2a] rounded-xl p-5">
-          <p className="text-xs text-gray-500 uppercase tracking-wide mb-4">Portfolio Allocation</p>
+        <div className="rounded-xl p-5" style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border)' }}>
+          <p className="text-xs uppercase tracking-wide mb-4" style={{ color: 'var(--text-muted)' }}>Portfolio Allocation</p>
           <div className="flex gap-4 items-center">
             <ResponsiveContainer width={180} height={180}>
               <PieChart>
@@ -98,21 +98,21 @@ export default function Dashboard({ onNavigate }) {
                 <div key={d.name} className="flex items-center justify-between text-xs">
                   <span className="flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-sm flex-shrink-0" style={{ background: CAT_COLORS[d.name] || '#555' }} />
-                    <span className="text-gray-400">{d.name}</span>
+                    <span style={{ color: 'var(--text-secondary)' }}>{d.name}</span>
                   </span>
-                  <span className="text-gray-300 font-medium">{((d.value / total) * 100).toFixed(1)}%</span>
+                  <span style={{ color: 'var(--text-primary)' }} className="font-medium">{((d.value / total) * 100).toFixed(1)}%</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="bg-[#161616] border border-[#2a2a2a] rounded-xl p-5">
-          <p className="text-xs text-gray-500 uppercase tracking-wide mb-4">Monthly Investments by Category</p>
+        <div className="rounded-xl p-5" style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border)' }}>
+          <p className="text-xs uppercase tracking-wide mb-4" style={{ color: 'var(--text-muted)' }}>Monthly Investments by Category</p>
           <ResponsiveContainer width="100%" height={200}>
             <BarChart data={barData} margin={{ left: -10 }}>
-              <XAxis dataKey="name" tick={{ fill: '#6b7280', fontSize: 11 }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fill: '#6b7280', fontSize: 10 }} axisLine={false} tickLine={false}
+              <XAxis dataKey="name" tick={{ fill: 'var(--text-muted)', fontSize: 11 }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fill: 'var(--text-muted)', fontSize: 10 }} axisLine={false} tickLine={false}
                 tickFormatter={v => '₹' + (v / 1000) + 'k'} />
               <Tooltip content={<CustomTooltip />} />
               <Bar dataKey="amount" radius={[4, 4, 0, 0]} maxBarSize={48}>
@@ -124,16 +124,16 @@ export default function Dashboard({ onNavigate }) {
       </div>
 
       {/* Category summary table */}
-      <div className="bg-[#161616] border border-[#2a2a2a] rounded-xl mb-6 overflow-hidden">
-        <div className="flex justify-between items-center px-5 py-3 border-b border-[#2a2a2a]">
-          <p className="text-sm font-medium text-gray-300">Asset Summary</p>
-          <p className="text-xs text-gray-600">Click any row to manage investments</p>
+      <div className="rounded-xl mb-6 overflow-hidden" style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border)' }}>
+        <div className="flex justify-between items-center px-5 py-3" style={{ borderBottom: '1px solid var(--border)' }}>
+          <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Asset Summary</p>
+          <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Click any row to manage investments</p>
         </div>
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-[#1a1a1a]">
+            <tr style={{ backgroundColor: 'var(--bg-accent)' }}>
               {['Category', 'Current Value', '% of Portfolio', 'Monthly SIP', 'Entries'].map(h => (
-                <th key={h} className="text-left px-5 py-2.5 text-xs text-gray-600 uppercase tracking-wide font-medium">{h}</th>
+                <th key={h} className="text-left px-5 py-2.5 text-xs uppercase tracking-wide font-medium" style={{ color: 'var(--text-muted)' }}>{h}</th>
               ))}
             </tr>
           </thead>
@@ -141,25 +141,25 @@ export default function Dashboard({ onNavigate }) {
             {Object.entries(data.by_category)
               .sort((a, b) => b[1].value - a[1].value)
               .map(([cat, v]) => (
-                <tr key={cat} className="border-t border-[#1e1e1e] inv-row cursor-pointer"
+                <tr key={cat} className="inv-row cursor-pointer" style={{ borderTop: '1px solid var(--border)' }}
                   onClick={() => onNavigate(cat)}>
                   <td className="px-5 py-3">
                     <span className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-sm" style={{ background: CAT_COLORS[cat] || '#555' }} />
-                      <span className="text-gray-200">{cat}</span>
+                      <span style={{ color: 'var(--text-primary)' }}>{cat}</span>
                     </span>
                   </td>
-                  <td className="px-5 py-3 text-gold font-medium">{fmt(v.value)}</td>
+                  <td className="px-5 py-3 font-medium" style={{ color: 'var(--gold)' }}>{fmt(v.value)}</td>
                   <td className="px-5 py-3">
                     <div className="flex items-center gap-2">
-                      <div className="w-20 h-1.5 bg-[#2a2a2a] rounded-full overflow-hidden">
+                      <div className="w-20 h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--border)' }}>
                         <div className="h-full rounded-full" style={{ width: `${Math.min((v.value / total) * 100, 100)}%`, background: CAT_COLORS[cat] || '#555' }} />
                       </div>
-                      <span className="text-gray-400 text-xs">{((v.value / total) * 100).toFixed(1)}%</span>
+                      <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>{((v.value / total) * 100).toFixed(1)}%</span>
                     </div>
                   </td>
-                  <td className="px-5 py-3 text-gray-400">{v.monthly > 0 ? fmt(v.monthly) : '—'}</td>
-                  <td className="px-5 py-3 text-gray-600">{v.count}</td>
+                  <td className="px-5 py-3" style={{ color: 'var(--text-secondary)' }}>{v.monthly > 0 ? fmt(v.monthly) : '—'}</td>
+                  <td className="px-5 py-3" style={{ color: 'var(--text-muted)' }}>{v.count}</td>
                 </tr>
               ))}
           </tbody>
@@ -167,39 +167,39 @@ export default function Dashboard({ onNavigate }) {
       </div>
 
       {/* Monthly transfers */}
-      <div className="bg-[#161616] border border-[#2a2a2a] rounded-xl overflow-hidden">
-        <div className="flex justify-between items-center px-5 py-3 border-b border-[#2a2a2a]">
-          <p className="text-sm font-medium text-gray-300">Monthly Transfer IN by Bank</p>
+      <div className="rounded-xl overflow-hidden" style={{ backgroundColor: 'var(--bg-tertiary)', border: '1px solid var(--border)' }}>
+        <div className="flex justify-between items-center px-5 py-3" style={{ borderBottom: '1px solid var(--border)' }}>
+          <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Monthly Transfer IN by Bank</p>
           <button onClick={() => setAddTransfer(true)}
-            className="text-xs text-gold border border-gold/30 px-3 py-1 rounded-lg hover:bg-gold/10 transition-colors">
+            className="text-xs px-3 py-1 rounded-lg transition-colors" style={{ color: 'var(--gold)', border: '1px solid rgba(201,168,76,0.3)' }}>
             + Add
           </button>
         </div>
         <table className="w-full text-sm">
           <thead>
-            <tr className="bg-[#1a1a1a]">
+            <tr style={{ backgroundColor: 'var(--bg-accent)' }}>
               {['Bank', 'Amount (₹)', ''].map(h => (
-                <th key={h} className="text-left px-5 py-2.5 text-xs text-gray-600 uppercase tracking-wide font-medium">{h}</th>
+                <th key={h} className="text-left px-5 py-2.5 text-xs uppercase tracking-wide font-medium" style={{ color: 'var(--text-muted)' }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {data.transfers.map(t => (
-              <tr key={t.id} className="border-t border-[#1e1e1e] inv-row">
+              <tr key={t.id} className="inv-row" style={{ borderTop: '1px solid var(--border)' }}>
                 <td className="px-5 py-3">
-                  <EditableCell value={t.bank} onSave={val => saveTransfer(t.id, 'bank', val)} className="text-gray-200" />
+                  <EditableCell value={t.bank} onSave={val => saveTransfer(t.id, 'bank', val)} style={{ color: 'var(--text-primary)' }} />
                 </td>
                 <td className="px-5 py-3">
-                  <EditableNumber value={t.amount} onSave={val => saveTransfer(t.id, 'amount', val)} className="text-gold" />
+                  <EditableNumber value={t.amount} onSave={val => saveTransfer(t.id, 'amount', val)} style={{ color: 'var(--gold)' }} />
                 </td>
                 <td className="px-5 py-3 text-right">
-                  <button onClick={() => delTransfer(t.id)} className="text-gray-700 hover:text-red-400 text-xs transition-colors">Remove</button>
+                  <button onClick={() => delTransfer(t.id)} className="text-xs transition-colors" style={{ color: 'var(--text-muted)' }}>Remove</button>
                 </td>
               </tr>
             ))}
-            <tr className="border-t border-[#2a2a2a] bg-[#1a1a1a]">
-              <td className="px-5 py-2.5 text-xs font-medium text-gray-400">Total</td>
-              <td className="px-5 py-2.5 text-gold font-medium">{fmtFull(data.monthly_transfer_in)}</td>
+            <tr style={{ borderTop: '1px solid var(--border)', backgroundColor: 'var(--bg-accent)' }}>
+              <td className="px-5 py-2.5 text-xs font-medium" style={{ color: 'var(--text-muted)' }}>Total</td>
+              <td className="px-5 py-2.5 font-medium" style={{ color: 'var(--gold)' }}>{fmtFull(data.monthly_transfer_in)}</td>
               <td />
             </tr>
           </tbody>
