@@ -1,6 +1,6 @@
 # WealthOS — Personal Finance Dashboard
 
-Dark, beautiful personal finance tracker. Run locally with Docker Desktop, deploy to Railway with one click.
+Dark, beautiful personal finance tracker. Run locally with Docker Desktop with one click.
 
 ---
 
