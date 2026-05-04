@@ -106,3 +106,17 @@ wealthos/
 ## Categories
 
 MF · FD · Bond · NPS · PPF · EPF · Gold · Shares · ETF · US · Crypto · Bank Accounts
+
+## Disclaimer
+
+WealthOS is an independent personal project built for private use.
+It is not affiliated with, endorsed by, or associated with any
+organization, company, product, or service that may share a similar
+name, including any entity operating under the name "WealthOS" or
+any of its subsidiaries, partners, or related brands.
+
+All trademarks and registered trademarks are the property of their
+respective owners.
+
+This project is open source and provided as-is, with no warranties
+of any kind. Use at your own risk.
