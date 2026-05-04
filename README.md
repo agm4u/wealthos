@@ -79,8 +79,7 @@ Then open `http://192.168.x.x:3000` on your phone browser.
 
 ```
 wealthos/
-├── docker-compose.yml       ← local dev (all 3 services)
-├── railway.toml             ← Railway deploy config
+├── docker-compose.yml       ← docker compose file (all 3 services)
 ├── backend/
 │   ├── Dockerfile
 │   ├── requirements.txt
@@ -106,4 +105,4 @@ wealthos/
 
 ## Categories
 
-MF · FD · Bond · NPS · PPF · EPF · Gold · Shares · ETF · US · Crypto
+MF · FD · Bond · NPS · PPF · EPF · Gold · Shares · ETF · US · Crypto · Bank Accounts
