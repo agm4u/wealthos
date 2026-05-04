@@ -4,12 +4,22 @@ Dark, beautiful personal finance tracker. Run locally with Docker Desktop with o
 
 ---
 
-## Run Locally (Docker Desktop)
+## Run Locally (Docker Desktop) or on Virtual Machines (VMs)
 
-### Prerequisites
+### Prerequisites (if using Docker Desktop)
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
+- Install Git → https://git-scm.com/download/win
 
-### Start the app
+### Prerequisites (if using Virtual Machines, example below for Ubuntu)
+
+```bash
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker ubuntu
+newgrp docker
+sudo apt install git -y
+```
+
+### Build and Start the app
 
 ```bash
 git clone https://github.com/agm4u/wealthos.git
@@ -19,9 +29,11 @@ docker compose up --build
 
 That's it. Open http://localhost:3000
 
+URLs:
+
 - Frontend: http://localhost:3000
 - API docs: http://localhost:8000/docs
-- Default Password: wealthos2026
+- Default Password: **wealthos2026**
 
 ### Stop the app
 ```bash
@@ -29,7 +41,7 @@ docker compose down
 ```
 Your data is safe — it lives in the `pgdata` Docker volume.
 
-### Daily Use
+### Frequent/Daily Use
 ```bash
 # Start
 docker compose up -d
@@ -46,7 +58,7 @@ docker compose up --build
 
 ---
 
-## Access from Phone (same WiFi)
+## Access from Phone or other Devices (same WiFi)
 
 Find your PC's local IP:
 - Windows: `ipconfig` → look for IPv4 Address
@@ -98,6 +110,7 @@ wealthos/
     │   └── pages/
     │       ├── Dashboard.jsx    ← charts, summary, transfers
     │       └── Investments.jsx  ← full CRUD table per category
+    │       └── Login.jsx        ← adds login functionality
     └── ...config files
 ```
 
